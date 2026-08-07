@@ -55,7 +55,7 @@ for(let i=0 ; i<10 ; i++){
         div.style.left=blocks[i]+'px'
         div.style.height =rand(50, 200) + 'px'
         line.append(div)
-        console.log(blocks);
+        
         
 }
 for(let i =0 ; i <40 ; i++){
@@ -71,28 +71,28 @@ for(let i =0 ; i <40 ; i++){
     let coinbottom=rand(30,150) 
     star.style.bottom=coinbottom +'px'
     coinbot.push(coinbottom)
-    console.log(coinleft);
+    
     coin.push({
         left:a,
         bottom:coinbottom
      })
     
      line.appendChild(star)
-     console.log(coin);
+    
      
 
     const s = document.querySelectorAll('.coin')
-console.log(s);
 
 
-console.log(coin.bottom);
+
+
 }  
 
 
 let leftside =setInterval(()=>{
     left=parseInt(getComputedStyle(supermario).left) + 120
     bottom=parseInt(getComputedStyle(supermario).bottom) +70
-    console.log(left);
+    
 
     blocks.forEach((item)=>{
         if(left >= item && left <= (item +100)){
@@ -139,8 +139,8 @@ let leftside =setInterval(()=>{
     })
 
       const playerRect = supermario.getBoundingClientRect();
-
-    document.querySelectorAll(".coin").forEach((coin) => {
+    const coins = document.querySelectorAll('.coin')
+    coins.forEach((coin) => {
 
         const coinx = coin.getBoundingClientRect();
 
@@ -162,7 +162,7 @@ let leftside =setInterval(()=>{
         if (flag >= 4000) clearInterval(leftside)
     
     
-},10)
+},20)
 
 let times=setInterval(()=>{
 
@@ -188,10 +188,7 @@ let times=setInterval(()=>{
 
 window.addEventListener('keydown',(e)=>{
     let mykey=e.keyCode
-    if(gameover){
-        return
-    }
-    if(gamewin){
+    if(gameover || gamewin){
         return
     }
     mariosound.play()
@@ -204,6 +201,9 @@ window.addEventListener('keydown',(e)=>{
         }
 })
 addEventListener('touchstart',()=>{
+    if(gameover || gamewin){
+        return
+    }
     mariosound.play()
         supermario.classList.add('jump')
             setTimeout(() => {
