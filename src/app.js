@@ -21,7 +21,7 @@ let flag=0
 let scorenum=0
 let livenum=3
 let hit=false
-let time=7
+let time=30
 
 let hitsound=new Audio('./audio/Mario-Jump-2.mp3')
 hitsound.volume=0.5
