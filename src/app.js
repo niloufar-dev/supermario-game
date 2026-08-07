@@ -21,7 +21,7 @@ let flag=0
 let scorenum=0
 let livenum=3
 let hit=false
-let time=30 
+let time=7
 
 let hitsound=new Audio('./audio/Mario-Jump-2.mp3')
 hitsound.volume=0.5
@@ -33,6 +33,7 @@ winsound.volume=0.4
 let coinsound=new Audio('./audio/coin-upaif-14631.mp3')
 coinsound.volume=0.5 
 let gameover=false
+let gamewin=false
 
 
 
@@ -170,7 +171,8 @@ let times=setInterval(()=>{
     if(time<10){
         timer.textContent='0'+time
     }
-    if(time<=0){
+    if(time<=0 && gamewin == false){
+        gamewin=true
         win.classList.remove('hidden')
         win.classList.add('flex')
         mariosound.pause()
@@ -186,7 +188,12 @@ let times=setInterval(()=>{
 
 window.addEventListener('keydown',(e)=>{
     let mykey=e.keyCode
-
+    if(gameover){
+        return
+    }
+    if(gamewin){
+        return
+    }
     mariosound.play()
     if (mykey ==32) {
             e.preventDefault()
